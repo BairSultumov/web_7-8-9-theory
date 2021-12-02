@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+<title>
+Задание 4
+</title>
+<link rel="stylesheet" href="4.css">
+<meta charset="utf-8">
+<style>
+.red{
+background-color: red;
+border: 2px black solid;
+}
+.blue{
+background-color: rgb(0, 89, 255);
+border: 1px red solid;
+display: inline-block;
+}
+</style>
+</head>
+<body >
+<span id="out">
+
+</span>
+<script>
+function fred(string)
+{
+    console.log("fred");
+    return "<div class='red'>"+string+"</div>";
+}
+
+function fblue (string)
+{
+    console.log("fblue");
+    return "<div class='blue''>"+string+"</div>";
+}
+
+function fstr (arr)
+{
+console.log("fstr");
+var string="";
+
+for(let i=0;i<Object.keys(arr).length;i++)
+{
+string+=arr[i];
+}
+
+return string;
+}
+
+function flist()
+{
+console.log("flist");
+var result="<ul>";
+for(let i=0;i<Object.keys(arr).length;i++)
+{
+result+="<li>"+arr[i]+"</li>";
+}
+result+="</ul>";
+return result;
+}
+
+var f1,f2;
+
+var temp=confirm("Отобразить данные в виде синих блоков?");
+
+if(temp)
+{
+f1=fblue;
+}
+else{
+f1=fred;
+}
+
+temp=confirm("Отобразить данные в виде списка?");
+
+if(temp)
+{
+f2=flist;
+}
+else{
+f2=fstr;
+}
+
+var arr=new Array();
+var x=0;
+
+do
+{
+var x=prompt("Введите строку");
+arr.push(x);
+}while(x!=".")
+var rst=f1(f2(arr));
+
+document.getElementById("out").innerHTML=rst;
+</script>
+</body>
+</html>
