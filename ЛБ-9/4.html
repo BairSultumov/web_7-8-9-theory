@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #parent {
+            width: 400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <div id="parent">
+    </div>
+
+
+    <script>
+        let ArrImg = ['1', '2', '3', '4']
+        let NewImg = [];
+        let ArrText = ['первый', 'второй', 'третий', 'четвертый', 'пятый', 'шестой', 'седьмой']
+        var color = ['Aqua', 'grey', 'green', 'red', 'black', 'gold', 'purple', 'white'];
+        let parent = document.getElementById('parent')
+
+        function create() {
+            let div = document.createElement('div')
+            div.className = 'elem'
+            let img = document.createElement('img')
+            div.appendChild(img)
+            let p = document.createElement('p')
+            div.appendChild(p)
+            parent.appendChild(div)
+        }
+
+
+
+        function clone(post, text) {
+            let a = 0;
+            while (post != 0) {
+                let k = text;
+                let elem = parent.querySelector('.elem');
+                let div = document.querySelector('.div')
+                elem.style.backgroundColor = color[Math.floor(Math.random() * color.length)];
+                let clone = elem.cloneNode(true);
+                while (k != 0) {
+                    clone.children[1].innerHTML += ArrText[Math.floor(Math.random() * ArrText.length)] + "-";
+                    //clone.children[1].Color = "#f00";
+                    //clone.children[1].style.backgroundColor = "yellow"
+                    k--;
+                }
+                NewImg = "img/" + ArrImg[Math.floor(Math.random() * ArrImg.length)] + ".jpg";
+                console.log(NewImg)
+                clone.children[0].src = NewImg
+                parent.appendChild(clone);
+                post--
+            }
+
+        }
+
+        let post = Number(prompt('Введите количество постов'))
+        let text = prompt('Введите количество предложений в постах')
+        create();
+        clone(post, text)
+    </script>
+</body>
+
+</html>

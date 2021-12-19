@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>3</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen'>
+</head>
+
+<body>
+
+<ul id="list">
+    <li onclick="update(this)">Новый</li>
+    <li onclick="update(this)">Новый</li>
+    <li onclick="update(this)">Новый</li>
+    <li onclick="update(this)">Новый</li>
+</ul>
+<form name="field">
+    <input type="button" name="add_but" value="Добавить элемент">
+</form>
+<script>
+    function update(elem) {
+        if (elem.innerHTML == "Новый") {
+            elem.innerHTML = "Старый"
+        } else {
+            if (elem.innerHTML == "Старый") {
+                elem.innerHTML = "Очень старый"
+            } else {
+                if (elem.innerHTML == "Очень старый") {
+                    elem.remove()
+                }
+            }
+        }
+    }
+
+    function add_elem(e) {
+        var list = document.getElementById("list")
+        list.innerHTML += "<li onclick=\"update(this)\">Новый</li>"
+    }
+    var path = document.field.add_but;
+    //console.log(path.value)
+    path.addEventListener("click", add_elem);
+</script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body style="margin: 0 auto; text-align: center;">
+
+
+
+    <script>
+        var color = ['Aqua', 'grey', 'green', 'red', 'black'];
+        var k = 1,
+            l = 0;
+
+
+        function createDiv(className) {
+            var div = document.createElement('div');
+            div.id = k;
+            div.style.width = '100px';
+            div.style.height = '100px';
+            div.style.display = 'inline-block';
+            div.style.margin = '5px';
+            div.style.background = color[className]
+            return div;
+        }
+
+        for (let i = 0; i < 5; i++) {
+            document.body.appendChild(createDiv(i));
+            k++;
+        }
+
+        (function changeColor(currentNumber) {
+
+            if (currentNumber > 5) {
+                currentNumber = 1;
+
+            }
+
+            var NewColor = color.slice(currentNumber).concat(color.slice(0, currentNumber));
+            for (let i = 1; i < 6; i++) {
+                var a = document.getElementById(i);
+                a.style.background = NewColor[l];
+                l++;
+            }
+
+            setTimeout(function() {
+                currentNumber++;
+                l = 0;
+                changeColor(currentNumber)
+            }, 1000);
+        }(1));
+    </script>
+</body>
+
+</html>

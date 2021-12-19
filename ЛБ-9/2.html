@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2_9</title>
+    <style>
+        body {
+            height: 500px;
+            width: 800px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+
+
+<body id="body">
+    <script>
+        var height = document.getElementById('body').offsetHeight;
+        var width = document.getElementById('body').offsetWidth;
+
+        var div = document.createElement('div');
+        var div2 = document.createElement('div');
+
+        function createDiv() {
+            div.className = 'one';
+            div.style.width = '10px';
+            div.style.height = '10px';
+            div.innerHTML = '*';
+            div.style.position = "absolute";
+            div.style.left = Math.random() * width + 'px';
+            div.style.top = Math.random() * height + 'px';
+            document.body.appendChild(div);
+            return div;
+        };
+
+        function createDiv2() {
+            div2.className = 'two';
+            div2.style.width = '10px';
+            div2.style.height = '10px';
+            div2.style.background = 'red';
+            div2.style.borderRadius = '50%';
+            document.body.appendChild(div2);
+            return div2;
+        };
+
+        function moveDiv() {
+            var x_pos = div.style.left
+            var y_pos = div.style.top
+            console.log(x_pos, y_pos);
+            // var div = document.querySelector('one');
+            let x = div2.style.left
+            let y = div2.style.top
+            console.log(x, y)
+            var animation = div2.animate([
+                { transform: 'translate(0)' },
+                { transform: 'translate(' + x + ', ' + y + ')' }
+
+            ], 3000);
+
+            div2.style.transform = 'translate(' + x_pos + ', ' + y_pos + ')';
+
+        }
+
+        function Start() {
+            createDiv2();
+            createDiv();
+            moveDiv()
+        }
+
+        setTimeout(function tick(){
+            Start()
+            setTimeout(tick,3000);
+        },30);
+        
+
+    </script>
+</body>
+
+</html>

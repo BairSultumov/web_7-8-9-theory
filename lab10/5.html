@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    5
+  </title>
+  <style type="text/css">
+
+  </style>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+  <form name="read">
+    <input type="text" name="text_field" placeholder="Введите данные"></input>
+    <br>
+    <input type="button" name="one" value="1" />
+    <input type="button" name="two" value="2" />
+    <input type="button" name="three" value="3" />
+    <br>
+    <input type="button" name="four" value="4" />
+    <input type="button" name="five" value="5" />
+    <input type="button" name="six" value="6" />
+    <br>
+    <input type="button" name="seven" value="7" />
+    <input type="button" name="eight" value="8" />
+    <input type="button" name="nine" value="9" />
+    <br>
+    <input type="button" name="zero" value="0" />
+    <input type="button" name="plus" value="+" />
+    <input type="button" name="minus" value="-" />
+    <br>
+    <input type="button" name="div" value="/" />
+    <input type="button" name="mul" value="*" />
+    <input type="button" name="eql" value="=" />
+  </form>
+
+  <script type="text/javascript">
+
+    var chislo1 = new Number(0);
+    var chislo2 = new Number(0);
+    var isResultExist = false;
+    var result;
+    var kol = 0;
+    var action = "";
+    var isFirst = true;
+    var pole = document.read;
+    
+    function add_chislo(e) {
+      if (isResultExist == true) {
+        document.read.text_field.value = "";
+        isResultExist = false;
+      }
+      if (isFirst == true) {
+        chislo1 = chislo1 * 10;
+        chislo1 = chislo1 + new Number(e.target.value);
+        document.read.text_field.value = chislo1;
+      }
+      else {
+        chislo2 = chislo2 * 10;
+        chislo2 = chislo2 + new Number(e.target.value);
+        document.read.text_field.value = chislo2;
+      }
+    }
+
+    function add_ariphmetic(e) {
+      if (isFirst == true) {
+        if (e.target.value == "+") {
+          action = "+";
+          isFirst = false;
+        }
+        if (e.target.value == "-") {
+          action = "-";
+          isFirst = false;
+        }
+        if (e.target.value == "/") {
+          action = "/";
+          isFirst = false;
+        }
+        if (e.target.value == "*") {
+          action = "*";
+          isFirst = false;
+        }
+      }
+      else {
+        if (e.target.value == "=") {
+          isResultExist = true;
+          isFirst = true;
+          if (action == "+") {
+            document.read.text_field.value = chislo1 + chislo2;
+            chislo1 = 0;
+            chislo2 = 0;
+          }
+          if (action == "-") {
+            document.read.text_field.value = chislo1 - chislo2;
+            chislo1 = 0;
+            chislo2 = 0;
+          }
+          if (action == "/") {
+            document.read.text_field.value = chislo1 / chislo2;
+            chislo1 = 0;
+            chislo2 = 0;
+          }
+          if (action == "*") {
+            document.read.text_field.value = chislo1 * chislo2;
+            chislo1 = 0;
+            chislo2 = 0;
+          }
+        }
+      }
+    }
+
+    pole.one.addEventListener("click", add_chislo);
+    pole.two.addEventListener("click", add_chislo);
+    pole.three.addEventListener("click", add_chislo);
+    pole.four.addEventListener("click", add_chislo);
+    pole.five.addEventListener("click", add_chislo);
+    pole.six.addEventListener("click", add_chislo);
+    pole.seven.addEventListener("click", add_chislo);
+    pole.eight.addEventListener("click", add_chislo);
+    pole.nine.addEventListener("click", add_chislo);
+    pole.zero.addEventListener("click", add_chislo);
+    pole.plus.addEventListener("click", add_ariphmetic);
+    pole.minus.addEventListener("click", add_ariphmetic);
+    pole.div.addEventListener("click", add_ariphmetic);
+    pole.mul.addEventListener("click", add_ariphmetic);
+    pole.eql.addEventListener("click", add_ariphmetic);
+  </script>
+
+</body>
+
+</html>

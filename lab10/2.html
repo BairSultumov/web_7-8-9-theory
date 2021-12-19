@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        2
+    </title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form name="buttons">
+    <input type="button" name="but1" value="Не наведён">
+    <input type="button" name="but2" value="Не наведён">
+    <input type="button" name="but3" value="Не наведён">
+</form>
+
+<script type="text/javascript">
+    function new_text(e){
+        e.target.value="Наведён"
+    }
+    function old_text(e){
+        e.target.value="Не наведён"
+    }
+    function color(){
+        r = Math.round(255.0*Math.random());
+        g = Math.round(255.0*Math.random());
+        d = Math.round(255.0*Math.random());
+        col="rgb("+r+","+g+","+d+")";
+        return col;
+    }//a,a,a);
+    document.getElementB
+    function change_color(e){
+        cols=color();
+        e.target.style="background-color:"+cols;
+        console.log(cols);
+    }
+    var path = document.buttons
+
+    path.but1.addEventListener("mouseover",new_text)
+    path.but2.addEventListener("mouseover",new_text)
+    path.but3.addEventListener("mouseover",new_text)
+
+    path.but1.addEventListener("mouseout",old_text)
+    path.but2.addEventListener("mouseout",old_text)
+    path.but3.addEventListener("mouseout",old_text)
+
+    path.but1.addEventListener("click",change_color)
+    path.but2.addEventListener("click",change_color)
+    path.but3.addEventListener("click",change_color)
+
+
+
+</script>
+
+</body>
+</html>

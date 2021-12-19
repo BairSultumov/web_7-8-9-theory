@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="list"></div>
+    <script>
+        var List = document.getElementById('list');
+
+        var nodes = List.childNodes;
+
+        function create(arr) {
+            for (var i = 0, ln = arr.length; i < ln; i++) {
+
+                var li = document.createElement('li');
+                var node = document.createTextNode(arr[i]);
+                li.appendChild(node);
+                List.appendChild(li);
+                var type = "";
+                if (nodes[i].nodeType === 1)
+                    type = "элемент";
+                else if (nodes[i].nodeType === 2)
+                    type = "атрибут";
+                else if (nodes[i].nodeType === 3)
+                    type = "текст";
+
+                console.log(nodes[i].nodeName + ": " + type);
+            }
+        }
+        var arr = [];
+        var a;
+        while (a = +prompt('Введите текст')) {
+            arr.push(a);
+        }
+        create(arr);
+    </script>
+
+</body>
+
+
+
+</html>
